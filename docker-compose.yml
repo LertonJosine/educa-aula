@@ -1,0 +1,25 @@
+version: '3'
+services:
+  educa:
+    build: .
+    volumes:
+      - .:/Educa
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - 8000:8000
+    depends_on:
+      - data_base
+  
+  data_base:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/prostgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: lerton
+      POSTGRES_PASSWORD: lerton123
+
+volumes:
+  postgres_data:
+
+

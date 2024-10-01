@@ -13,7 +13,7 @@ services:
   data_base:
     image: postgres:13
     volumes:
-      - postgres_data:/var/lib/prostgresql/data
+      - postgres_data:/var/lib/prostgresql/data/
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: lerton

@@ -1,0 +1,10 @@
+{% block main %}
+  <main>
+    <h1>Sign Up</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit">Signup</button>
+    </form>
+  </main>
+{% endblock %}

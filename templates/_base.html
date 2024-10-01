@@ -8,15 +8,33 @@
   <body>
     {% block header %}
       <h1>Pagina Inicial</h1>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+            <li>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+              </form>
+            </li>
+            
+          {% else %}
+            <li>
+              <a href="{% url 'login' %}">Login</a>
+            </li>
+            <li>
+              <a href="{% url 'signup' %}">Signup</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
     {% endblock %}
 
     {% block main %}
       <h1>Inicio</h1>
       <p>Bem vindo a pagina inicial</p>
     {% endblock %}
-
     {% block footer %}
-
     {% endblock %}
   </body>
 </html>

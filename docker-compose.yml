@@ -7,6 +7,15 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - 8000:8000
+    environment:
+      - "DJANGO_SECRET_KEY=django-insecure-gwbvz$+y9*0u0)q#10+&5$#sc)b1i6cp&*u=&lz-=q3@uip3ph"
+      - "DJANGO_DEBUG=True"
+      - "DJANGO_DB_ENGINE=django.db.backends.postgresql"
+      - "DJANGO_DB_NAME=postgres"
+      - "DJANGO_DB_USER=lerton"
+      - "DJANGO_DB_PASSWORD=lerton123"
+      - "DJANGO_DB_HOST=data_base"
+      - "DJANGO_DB_PORT=5432"
     depends_on:
       - data_base
   

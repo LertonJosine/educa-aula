@@ -1,5 +1,24 @@
 {% extends '../_base.html' %}
 {% load static %}
+
+
+{% block header %}
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center">
+    <h1 class="logo me-auto"><a href="{% url 'home' %}">Educa</a></h1>
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
+
+    
+    <!-- .navbar -->
+
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit" class="get-started-btn" style="border: none;">Logout</button>
+  </div>
+</header>
+
+{% endblock header %}
 {% block main %}
   <main id="main">
     <!-- ======= Breadcrumbs ======= -->
@@ -24,7 +43,8 @@
               <p>
                 <label for="id_email">Email:</label>
                 {{form.email}}</p>
-              <button type="submit">Update</button>
+                <a href="{% url 'password_change' %}">Change Password</a><br>
+              <button type="submit" class="get-started-btn" style="border: none; margin: 2em 0em;" >Update</button>
             </form>
           </div>
         </div>

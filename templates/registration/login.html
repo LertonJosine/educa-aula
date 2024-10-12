@@ -16,11 +16,13 @@
       <div class="container" data-aos="fade-up">
         <div class="row mt-5">
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <form action="" method="post" role="form" class="php-email-form" style="margin-bottom: 2em;">
               {% csrf_token %}
               {{ form.as_p }}
-              <button type="submit">Login</button>
+              <button type="submit" >Login</button>
             </form>
+            <p>Don't Have an account?<a href="{% url 'signup' %}"> Signup</a></p>
+            <p>Forgot Your Password? <a href="{% url 'password_reset' %}">Reset Pasword.</a></p>
           </div>
         </div>
       </div>

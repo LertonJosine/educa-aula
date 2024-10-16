@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import resolve, reverse
-from .forms import CustomUserCreationForm
-from .views import SignupView
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .views import SignupView, ProfileView
 
 class AccountsTest(TestCase):
     
@@ -43,4 +43,45 @@ class SignupTest(TestCase):
         self.assertTemplateUsed(self.response, 'registration/signup.html')
         self.assertContains(self.response, 'Sign Up')
         
+
+class ProfileTests(TestCase):
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='test',
+            email='test@gmail.com',
+            password='test123'
+        )
+        self.user2 =get_user_model().objects.create_user(
+            username='test2',
+            email='test2@gmail.com',
+            password='test123'
+        )
+        
+        url = reverse('profile', args=[self.user.pk])
+        self.client.login(username=self.user.username, password='test123')
+        self.respose = self.client.get(url)
     
+    def test_profile_name(self):
+        self.assertEqual(self.respose.status_code, 200)
+    
+    def test_profile_page_template(self):
+        self.assertContains(self.respose, 'Profile')
+        self.assertTemplateUsed(self.respose, 'registration/profile.html')
+    
+    def test_profile_user_can_only_access_his_data(self):
+        url = reverse('profile', args=[self.user2.pk])
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 403)
+    
+    def test_profile_form_used(self):
+        form = self.respose.context['form']
+        self.assertIsInstance(form, CustomUserChangeForm)
+    
+    def test_profile_view_used(self):
+        view = resolve(reverse('profile', args=[self.user.pk]))
+        self.assertEqual(view.func.__name__, ProfileView.as_view().__name__)
+    
+    def test_profile_only_login_user(self):
+        self.client.logout()
+        response = self.client.get(reverse('profile', args=[self.user.pk]))
+        self.assertRedirects(response, f"/accounts/login/?next=/accounts/profile/{self.user.pk}/")

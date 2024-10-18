@@ -21,7 +21,7 @@
                     <h4>{{ course.name }}</h4>
                     <p class="price">{{ course.price }}</p>
                   </div>
-                  <h3><a href="#">{{ course.name }}</a></h3>
+                  <h3><a href="{% url 'course_details' course.pk %}">{{ course.name }}</a></h3>
                   <p>{{ course.resume|slice:"50" }}</p>
                 </div>
               </div>

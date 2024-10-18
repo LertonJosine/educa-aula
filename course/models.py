@@ -8,7 +8,7 @@ class Course(models.Model):
     trainer = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     resume = models.TextField()
     sits = models.IntegerField()
-    price = models.DecimalField(decimal_places=4, max_digits=6)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     cover = models.ImageField(upload_to=".", blank=True)
     
     def __str__(self) -> str:

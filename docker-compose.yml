@@ -30,5 +30,6 @@ services:
 
 volumes:
   postgres_data:
+    name: postgres_data_aula
 
 

@@ -15,6 +15,6 @@ class Course(models.Model):
         return self.name[:50]
     
     def get_absolute_url(self):
-        return reverse("home")
+        return reverse("list_courses")
     
     

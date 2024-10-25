@@ -16,6 +16,11 @@ services:
       - "DJANGO_DB_PASSWORD=lerton123"
       - "DJANGO_DB_HOST=data_base"
       - "DJANGO_DB_PORT=5432"
+      - "DJANGO_EMAIL_HOST_USER=lertonjosine@gmail.com"
+      - "DJANGO_EMAIL_HOST_PASSWORD=mheafxempyotnyso"
+      - "DJANGO_EMAIL_HOST=smtp.gmail.com"
+      - "DJANGO_EMAIL_HOST_PORT=587"
+      - "DJANGO_EMAIL_USE_TLS=True"
     depends_on:
       - data_base
   
@@ -27,6 +32,7 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_USER: lerton
       POSTGRES_PASSWORD: lerton123
+      
 
 volumes:
   postgres_data:

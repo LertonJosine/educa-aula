@@ -8,8 +8,8 @@ services:
     ports:
       - 8000:8000
     environment:
-      - "DJANGO_SECRET_KEY=django-insecure-gwbvz$+y9*0u0)q#10+&5$#sc)b1i6cp&*u=&lz-=q3@uip3ph"
-      - "DJANGO_DEBUG=True"
+      - "DJANGO_SECRET_KEY=XQyVM2nX2O2ZJcahEsd5uYgorG1dIAepv1cKnB6h34ma4Q9thrc"
+      - "DJANGO_DEBUG=False"
       - "DJANGO_DB_ENGINE=django.db.backends.postgresql"
       - "DJANGO_DB_NAME=postgres"
       - "DJANGO_DB_USER=lerton"
@@ -21,6 +21,12 @@ services:
       - "DJANGO_EMAIL_HOST=smtp.gmail.com"
       - "DJANGO_EMAIL_HOST_PORT=587"
       - "DJANGO_EMAIL_USE_TLS=True"
+      - "DJANGO_SECURE_SSL_REDIRECT=True"
+      - "DJANGO_SECURE_HSTS_SECONDS=2592000"
+      - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=True"
+      - "DJANGO_SECURE_HSTS_PRELOAD=True"
+      - "DJANGO_SESSION_COOKIE_SECURE=True"
+      - "DJANGO_CSRF_COOKIE_SECURE=True"
     depends_on:
       - data_base
   

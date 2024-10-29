@@ -10,12 +10,7 @@ services:
     environment:
       - "DJANGO_SECRET_KEY=XQyVM2nX2O2ZJcahEsd5uYgorG1dIAepv1cKnB6h34ma4Q9thrc"
       - "DJANGO_DEBUG=False"
-      - "DJANGO_DB_ENGINE=django.db.backends.postgresql"
-      - "DJANGO_DB_NAME=postgres"
-      - "DJANGO_DB_USER=lerton"
-      - "DJANGO_DB_PASSWORD=lerton123"
-      - "DJANGO_DB_HOST=data_base"
-      - "DJANGO_DB_PORT=5432"
+      
       - "DJANGO_EMAIL_HOST_USER=lertonjosine@gmail.com"
       - "DJANGO_EMAIL_HOST_PASSWORD=mheafxempyotnyso"
       - "DJANGO_EMAIL_HOST=smtp.gmail.com"
